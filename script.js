@@ -154,21 +154,21 @@ checkoutBtn.addEventListener("click",function(){
     return;
   }
 
-  
-
   //envia pedido para api whats
-  const cartItems = cart.map((item) =>{
-    return(
-      `${item.name}
-       Quantidade: ( ${item.quantity})
-        Preço R$: ${item.price } |`
-    )
-  }).join(" ");
+  let total = 0; // Inicializa o valor total como zero
 
-  const message = encodeURIComponent(cartItems)
-  const phone = "5571987202769"
-  window.open(`https://wa.me/${phone}?text=${message} Endereço:${addressInput.value}`,"_blank")
-  cart = []
+const cartItems = cart.map((item) => {
+  const itemTotal = item.price * item.quantity; // Calcula o valor total do item
+  total += itemTotal; // Adiciona ao valor total acumulado
+  return `${item.name}
+Quantidade: ${item.quantity}
+Preço R$: ${item.price.toFixed(2)} (Total: R$ ${itemTotal.toFixed(2)})`;
+}).join("\n");
+
+const message = encodeURIComponent(`${cartItems}\n\nValor Total: R$ ${total.toFixed(2)}`);
+const phone = "5571987202769"; // numero zap
+window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+cart = []; // Limpa o carrinho após enviar a mensagem
   updateCartModal();
 });
 
@@ -176,7 +176,7 @@ checkoutBtn.addEventListener("click",function(){
 function checkRestaurantOpen(){
   const data = new Date();
   const hora = data.getHours();
-  return hora >= 18 && hora < 22;
+  return hora >= 8 && hora < 18;
   
 }
 
