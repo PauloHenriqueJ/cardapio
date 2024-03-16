@@ -154,12 +154,14 @@ checkoutBtn.addEventListener("click",function(){
     return;
   }
 
+  
+
   //envia pedido para api whats
   const cartItems = cart.map((item) =>{
     return(
       `${item.name}
        Quantidade: ( ${item.quantity})
-        Preço R$: ${item.price} |`
+        Preço R$: ${item.price } |`
     )
   }).join(" ");
 
