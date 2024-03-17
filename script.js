@@ -166,8 +166,8 @@ Preço R$: ${item.price.toFixed(2)} (Total: R$ ${itemTotal.toFixed(2)})`;
 }).join("\n");
 
 const message = encodeURIComponent(`${cartItems}\n\nValor Total: R$ ${total.toFixed(2)}`);
-const phone = "5571987202769"; // numero zap
-window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+const phone = "5571987202769"; // Substitua pelo número correto
+window.open(`https://wa.me/${phone}?text=${message}&disable_edit=true`, "_blank");
 cart = []; // Limpa o carrinho após enviar a mensagem
   updateCartModal();
 });
