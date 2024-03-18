@@ -130,11 +130,11 @@ if(inputValue !== ""){
 //finalizando o carrinho
 checkoutBtn.addEventListener("click",function(){
 
-// const isOpen = checkRestaurantOpen();
+const isOpen = checkRestaurantOpen();
  if(!isOpen){
 
   Toastify({
-    text: "Ops! Ó restaurante está fechado",
+    text: "Ops! está fechado.",
     duration: 3000,
    
     close: true,
@@ -176,7 +176,7 @@ cart = []; // Limpa o carrinho após enviar a mensagem
 function checkRestaurantOpen(){
   const data = new Date();
   const hora = data.getHours();
-  return hora >= 8 && hora < 23;
+  return hora >= 8 && hora < 18;
   
 }
 
